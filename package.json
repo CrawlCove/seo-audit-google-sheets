@@ -10,8 +10,8 @@
   "keywords": ["seo", "google-sheets", "apps-script", "site-audit", "crawl-cove"],
   "author": "Crawl Cove",
   "license": "MIT",
-  "repository": { "type": "git", "url": "https://github.com/CrawlCove/crawlcove-sheets.git" },
-  "homepage": "https://crawlcove.com/?utm_source=github&utm_medium=crawlcove-sheets",
+  "repository": { "type": "git", "url": "https://github.com/CrawlCove/seo-audit-google-sheets.git" },
+  "homepage": "https://crawlcove.com/?utm_source=github&utm_medium=seo-audit-google-sheets",
   "devDependencies": {
     "vitest": "^5.0.2"
   }

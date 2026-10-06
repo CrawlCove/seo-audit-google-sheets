@@ -15,7 +15,7 @@ function onOpen() {
 }
 
 function ccAbout() {
-  SpreadsheetApp.getUi().alert('Crawl Cove for Sheets', 'Imports a Crawl Cove crawl export (Reports → Export JSON/CSV) into this workbook: Summary, Pages, Issues, Issues by type, Pages by status, Title & meta flags.\n\nhttps://github.com/CrawlCove/crawlcove-sheets', SpreadsheetApp.getUi().ButtonSet.OK)
+  SpreadsheetApp.getUi().alert('Crawl Cove for Sheets', 'Imports a Crawl Cove crawl export (Reports → Export JSON/CSV) into this workbook: Summary, Pages, Issues, Issues by type, Pages by status, Title & meta flags.\n\nhttps://github.com/CrawlCove/seo-audit-google-sheets', SpreadsheetApp.getUi().ButtonSet.OK)
 }
 
 function ccImportFromDrive() {

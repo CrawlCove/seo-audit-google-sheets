@@ -162,7 +162,7 @@ function ccBuildWorkbook(dataset) {
     ['Crawl incomplete', dataset.runIncomplete ? 'yes' : 'no'],
     ['Source', dataset.source === 'csv' ? 'CSV export' : 'JSON export'],
     ['', ''],
-    ['Made with Crawl Cove', 'https://crawlcove.com/?utm_source=sheets&utm_medium=crawlcove-sheets']
+    ['Made with Crawl Cove', 'https://crawlcove.com/?utm_source=sheets&utm_medium=seo-audit-google-sheets']
   ]
 
   var pagesRows = [CC_CSV_COLUMNS.concat(['Issues on page'])]

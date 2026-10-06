@@ -1,8 +1,8 @@
 # crawlcove-sheets
 
-A Google Sheets add-on (Apps Script) that imports a [Crawl Cove](https://crawlcove.com/?utm_source=github&utm_medium=crawlcove-sheets) crawl export into a standard SEO audit workbook: a **Summary**, every **Page** with its 29 export columns, an **Issues** list, **Issues by type**, **Pages by status**, and **Title & meta flags** with conditional formatting. One menu item, no copy-pasting formulas, and the issue rules are the same ones [crawlcove-mcp](https://github.com/CrawlCove/crawlcove-mcp) uses, so the sheet and an AI assistant agree on the numbers.
+A Google Sheets add-on (Apps Script) that imports a [Crawl Cove](https://crawlcove.com/?utm_source=github&utm_medium=seo-audit-google-sheets) crawl export into a standard SEO audit workbook: a **Summary**, every **Page** with its 29 export columns, an **Issues** list, **Issues by type**, **Pages by status**, and **Title & meta flags** with conditional formatting. One menu item, no copy-pasting formulas, and the issue rules are the same ones [crawlcove-mcp](https://github.com/CrawlCove/seo-mcp-server) uses, so the sheet and an AI assistant agree on the numbers.
 
-Works with both export formats the desktop app writes from Reports → Export: JSON ([crawlcove-export-spec](https://github.com/CrawlCove/crawlcove-export-spec)) and CSV. A Screaming Frog export works too once converted with [crawlcove-sf-import](https://github.com/CrawlCove/crawlcove-sf-import).
+Works with both export formats the desktop app writes from Reports → Export: JSON ([crawlcove-export-spec](https://github.com/CrawlCove/seo-crawl-export-spec)) and CSV. A Screaming Frog export works too once converted with [crawlcove-sf-import](https://github.com/CrawlCove/screaming-frog-export-converter).
 
 ## Install (two minutes, no add-on store)
 
@@ -40,23 +40,23 @@ A ready-made template workbook with the script installed and charts on the Summa
 
 ## Works with CrawlCove
 
-The export comes from [Crawl Cove](https://crawlcove.com/?utm_source=github&utm_medium=crawlcove-sheets), the desktop SEO crawler for Windows and Mac: crawl a site, open Reports, Export JSON or CSV, import here. The app's own report ranks fixes by impact and keeps history over time; the sheet is for sharing with a client or building your own pivots.
+The export comes from [Crawl Cove](https://crawlcove.com/?utm_source=github&utm_medium=seo-audit-google-sheets), the desktop SEO crawler for Windows and Mac: crawl a site, open Reports, Export JSON or CSV, import here. The app's own report ranks fixes by impact and keeps history over time; the sheet is for sharing with a client or building your own pivots.
 
-This repo has its own page on crawlcove.com: [Crawl Cove Google Sheets add-on](https://crawlcove.com/open-source/crawlcove-sheets?utm_source=github&utm_medium=crawlcove-sheets).
+This repo has its own page on crawlcove.com: [Crawl Cove Google Sheets add-on](https://crawlcove.com/open-source/crawlcove-sheets?utm_source=github&utm_medium=seo-audit-google-sheets).
 
 ## Related tools
 
-- [crawlcove-js](https://github.com/CrawlCove/crawlcove-js) — `crawlcove-export`, a typed JavaScript/TypeScript library to load, query and convert Crawl Cove exports.
-- [crawlcove-export-spec](https://github.com/CrawlCove/crawlcove-export-spec) — the JSON Schema and CSV column reference this add-on reads.
-- [crawlcove-sf-import](https://github.com/CrawlCove/crawlcove-sf-import) — convert a Screaming Frog export into the Crawl Cove export format, with a report of what carried over.
-- [crawlcove-mcp](https://github.com/CrawlCove/crawlcove-mcp) — the same crawl data for Claude, Cursor and other AI assistants.
-- [crawlcove-cli](https://github.com/CrawlCove/crawlcove-cli) — headless whole-site crawl with redirect-chain, broken-link, title and noindex checks.
-- [crawlcove-action](https://github.com/CrawlCove/crawlcove-action) — the same checks as a GitHub Action on every PR.
-- [crawlcove-schema-validator](https://github.com/CrawlCove/crawlcove-schema-validator) — validate a page's JSON-LD against Google's required and recommended rich-result properties.
-- [crawlcove-hreflang-checker](https://github.com/CrawlCove/crawlcove-hreflang-checker) — check a page's or a sitemap's hreflang tags: codes, self-reference, x-default and return tags.
-- [crawlcove-sitemap-validator](https://github.com/CrawlCove/crawlcove-sitemap-validator) — validate an XML sitemap or sitemap index against the protocol and search-engine limits.
-- [crawlcove-robots-txt-tester](https://github.com/CrawlCove/crawlcove-robots-txt-tester) — lint a robots.txt and test which URLs each crawler may fetch.
-- [crawlcove-redirect-chain-checker](https://github.com/CrawlCove/crawlcove-redirect-chain-checker) — follow every hop of a URL's redirects; flags chains, loops, HTTPS downgrades and meta refreshes.
+- [crawlcove-js](https://github.com/CrawlCove/seo-crawl-export-js) — `crawlcove-export`, a typed JavaScript/TypeScript library to load, query and convert Crawl Cove exports.
+- [crawlcove-export-spec](https://github.com/CrawlCove/seo-crawl-export-spec) — the JSON Schema and CSV column reference this add-on reads.
+- [crawlcove-sf-import](https://github.com/CrawlCove/screaming-frog-export-converter) — convert a Screaming Frog export into the Crawl Cove export format, with a report of what carried over.
+- [crawlcove-mcp](https://github.com/CrawlCove/seo-mcp-server) — the same crawl data for Claude, Cursor and other AI assistants.
+- [crawlcove-cli](https://github.com/CrawlCove/seo-crawler-cli) — headless whole-site crawl with redirect-chain, broken-link, title and noindex checks.
+- [crawlcove-action](https://github.com/CrawlCove/seo-audit-action) — the same checks as a GitHub Action on every PR.
+- [crawlcove-schema-validator](https://github.com/CrawlCove/schema-markup-validator) — validate a page's JSON-LD against Google's required and recommended rich-result properties.
+- [crawlcove-hreflang-checker](https://github.com/CrawlCove/hreflang-checker) — check a page's or a sitemap's hreflang tags: codes, self-reference, x-default and return tags.
+- [crawlcove-sitemap-validator](https://github.com/CrawlCove/xml-sitemap-validator) — validate an XML sitemap or sitemap index against the protocol and search-engine limits.
+- [crawlcove-robots-txt-tester](https://github.com/CrawlCove/robots-txt-tester) — lint a robots.txt and test which URLs each crawler may fetch.
+- [crawlcove-redirect-chain-checker](https://github.com/CrawlCove/redirect-chain-checker) — follow every hop of a URL's redirects; flags chains, loops, HTTPS downgrades and meta refreshes.
 
 ## License
 
