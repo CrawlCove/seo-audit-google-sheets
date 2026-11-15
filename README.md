@@ -1,3 +1,5 @@
+<a href="https://crawlcove.com/download?utm_source=github&utm_medium=readme&utm_campaign=seo-audit-google-sheets"><img src="https://raw.githubusercontent.com/CrawlCove/.github/main/banners/seo-audit-google-sheets.svg" width="1200" alt="seo-audit-google-sheets: An Apps Script add-on that turns a site crawl export into an audit workbook: pages, issues by type, pages by status and title and meta flags." /></a>
+
 # crawlcove-sheets
 
 A Google Sheets add-on (Apps Script) that imports a [Crawl Cove](https://crawlcove.com/?utm_source=github&utm_medium=seo-audit-google-sheets) crawl export into a standard SEO audit workbook: a **Summary**, every **Page** with its 29 export columns, an **Issues** list, **Issues by type**, **Pages by status**, and **Title & meta flags** with conditional formatting. One menu item, no copy-pasting formulas, and the issue rules are the same ones [crawlcove-mcp](https://github.com/CrawlCove/seo-mcp-server) uses, so the sheet and an AI assistant agree on the numbers.
