@@ -105,11 +105,43 @@ function ccIsNoindex(p) {
   return /\bnoindex\b/i.test(p.robotsMeta || '') || /\bnoindex\b/i.test(p.xRobotsTag || '')
 }
 
-/** Issues per page, same rules as crawlcove-mcp get_issues. Returns [{type, url, detail}]. */
+/**
+ * Absolute form of a URL without its #fragment, resolving a root-relative or
+ * protocol-relative href against base. Apps Script has no URL class, so this
+ * covers what a canonical tag holds in practice and leaves anything else as is.
+ */
+function ccAbsolute(href, base) {
+  var u = String(href).split('#')[0]
+  if (/^https?:\/\//i.test(u)) return u
+  var m = /^(https?:)\/\/([^\/?#]+)/i.exec(base || '')
+  if (!m) return u
+  if (u.indexOf('//') === 0) return m[1] + u
+  if (u.charAt(0) === '/') return m[1] + '//' + m[2] + u
+  return u
+}
+
+/** True when the page's canonical names a different URL (a ?sort= variant, a print view). */
+function ccCanonicalizesElsewhere(p) {
+  if (!p.canonical) return false
+  var own = p.finalUrl || p.url
+  var target = ccAbsolute(p.canonical, own)
+  return target !== ccAbsolute(p.url) && target !== ccAbsolute(own)
+}
+
+/**
+ * Pages that compete in search, the only ones whose shared title is a duplicate: a 200
+ * page that did not redirect, is not noindex and does not canonicalise elsewhere.
+ * Same rule as seo-mcp-server 1.1.0 and seo-crawl-export-js 1.1.0.
+ */
+function ccCompetes(p) {
+  return p.statusCode === 200 && !p.fetchError && !(p.redirectHops > 0) && !ccIsNoindex(p) && !ccCanonicalizesElsewhere(p)
+}
+
+/** Issues per page, same rules as seo-mcp-server get_issues. Returns [{type, url, detail}]. */
 function ccIssues(pages) {
   var out = []
   var titleCounts = {}
-  pages.forEach(function (p) { if (p.title) titleCounts[p.title] = (titleCounts[p.title] || 0) + 1 })
+  pages.forEach(function (p) { if (p.title && ccCompetes(p)) titleCounts[p.title] = (titleCounts[p.title] || 0) + 1 })
   pages.forEach(function (p) {
     var okHtml = p.statusCode === 200 && !p.fetchError
     if (p.fetchError || p.statusCode === null || p.statusCode >= 400) {
@@ -121,7 +153,7 @@ function ccIssues(pages) {
     else {
       var tl = p.titleLength === null || p.titleLength === undefined ? p.title.length : p.titleLength
       if (tl > CC_TITLE_MAX) out.push({ type: 'long-title', url: p.url, detail: tl + ' chars: "' + p.title + '"' })
-      if (titleCounts[p.title] > 1) out.push({ type: 'duplicate-title', url: p.url, detail: '"' + p.title + '" is used on ' + titleCounts[p.title] + ' pages' })
+      if (ccCompetes(p) && titleCounts[p.title] > 1) out.push({ type: 'duplicate-title', url: p.url, detail: '"' + p.title + '" is used on ' + titleCounts[p.title] + ' pages' })
     }
     if (!p.metaDescription || p.metaDescription.trim() === '') out.push({ type: 'missing-meta-description', url: p.url, detail: 'no meta description' })
     else {
